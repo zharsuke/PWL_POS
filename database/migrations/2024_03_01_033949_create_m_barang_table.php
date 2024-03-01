@@ -19,6 +19,9 @@ return new class extends Migration
             $table->integer('harga_beli');
             $table->integer('harga_jual');
             $table->timestamps();
+
+            // defining foreign key at kategori_id column refers to kategori_id column on m_kategori table
+            $table->foreign('kategori_id')->references('kategori_id')->on('m_kategori');
         });
     }
 

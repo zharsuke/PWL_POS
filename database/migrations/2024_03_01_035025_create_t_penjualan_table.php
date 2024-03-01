@@ -18,6 +18,9 @@ return new class extends Migration
             $table->integer('harga');
             $table->integer('jumlah');
             $table->timestamps();
+
+            // defining foreign key at user_id column refers to user_id column on m_user table
+            $table->foreign('user_id')->references('user_id')->on('m_user');
         });
     }
 

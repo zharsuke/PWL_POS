@@ -18,6 +18,9 @@ return new class extends Migration
             $table->dateTime('stok_tanggal');
             $table->integer('stok_jumlah');
             $table->timestamps();
+
+            // defining foreign key at barang_id column refers to barang_id column on m_barang table
+            $table->foreign('barang_id')->references('barang_id')->on('m_barang');
         });
     }
 
