@@ -21,6 +21,8 @@ return new class extends Migration
 
             // defining foreign key at barang_id column refers to barang_id column on m_barang table
             $table->foreign('barang_id')->references('barang_id')->on('m_barang');
+            // defining foreign key at user_id column refers to user_id column on m_user table
+            $table->foreign('user_id')->references('user_id')->on('m_user');
         });
     }
 
