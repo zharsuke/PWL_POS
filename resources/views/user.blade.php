@@ -16,6 +16,8 @@
             <th>Username</th>
             <th>Name</th>
             <th>ID Level User</th>
+            <th>Level Code</th>
+            <th>Name Level</th>
             <th>Action</th>
         </tr>
         @foreach ($data as $data)
@@ -25,6 +27,8 @@
             <td>{{ $data->username }}</td>
             <td>{{ $data->nama }}</td>
             <td>{{ $data->level_id }}</td>
+            <td>{{ $data->level->level_kode }}</td>
+            <td>{{ $data->level->level_nama }}</td>
             <td><a href={{route('/user/update',$data->user_id)}}>Update</a> | <a href={{route('/user/delete',$data->user_id)}}>Delete</a></td>
         </tr>
         @endforeach
