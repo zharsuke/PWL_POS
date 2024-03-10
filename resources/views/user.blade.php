@@ -10,18 +10,18 @@
     <h1>Data User</h1>
     <table border="1" cellpadding="2" cellspacing="0">
         <tr>
-            <th>Amount Users</th>
-            {{-- <th>Username</th>
+            <th>ID</th>
+            <th>Username</th>
             <th>Name</th>
-            <th>ID Level User</th> --}}
+            <th>ID Level User</th>
         </tr>
         {{-- @foreach ($data as $data) --}}
         <tr>
-            <td>{{ $data }}</td>
-            {{-- <td>{{ $data->user_id }}</td> --}}
-            {{-- <td>{{ $data->username }}</td>
+            {{-- <td>{{ $data }}</td> --}}
+            <td>{{ $data->user_id }}</td>
+            <td>{{ $data->username }}</td>
             <td>{{ $data->nama }}</td>
-            <td>{{ $data->level_id }}</td> --}}
+            <td>{{ $data->level_id }}</td>
         </tr>
         {{-- @endforeach --}}
     </table>
