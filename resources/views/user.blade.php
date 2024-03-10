@@ -8,22 +8,26 @@
 </head>
 <body>
     <h1>Data User</h1>
+    <a href={{route('/user/add')}}>Add User</a>
     <table border="1" cellpadding="2" cellspacing="0">
         <tr>
+            {{-- <th>Amount Users</th> --}}
             <th>ID</th>
             <th>Username</th>
             <th>Name</th>
             <th>ID Level User</th>
+            <th>Action</th>
         </tr>
-        {{-- @foreach ($data as $data) --}}
+        @foreach ($data as $data)
         <tr>
             {{-- <td>{{ $data }}</td> --}}
             <td>{{ $data->user_id }}</td>
             <td>{{ $data->username }}</td>
             <td>{{ $data->nama }}</td>
             <td>{{ $data->level_id }}</td>
+            <td><a href={{route('/user/update',$data->user_id)}}>Update</a> | <a href={{route('/user/delete',$data->user_id)}}>Delete</a></td>
         </tr>
-        {{-- @endforeach --}}
+        @endforeach
     </table>
 </body>
 </html>
