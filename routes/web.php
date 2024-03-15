@@ -31,3 +31,6 @@ Route::get('/user/delete/{id}', [UserController::class, 'delete'])->name('/user/
 Route::post('/user/add_save', [UserController::class, 'add_save'])->name('/user/add_save');
 
 Route::put('/user/update_save/{id}', [UserController::class, 'update_save'])->name('/user/update_save');
+
+Route::get('/kategori/create', [KategoriController::class, 'create']);
+Route::post('/kategori', [KategoriController::class, 'store']);
