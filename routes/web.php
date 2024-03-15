@@ -32,5 +32,8 @@ Route::post('/user/add_save', [UserController::class, 'add_save'])->name('/user/
 
 Route::put('/user/update_save/{id}', [UserController::class, 'update_save'])->name('/user/update_save');
 
-Route::get('/kategori/create', [KategoriController::class, 'create']);
+Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kategori.create');
 Route::post('/kategori', [KategoriController::class, 'store']);
+Route::get('/kategori/update/{id}', [KategoriController::class, 'update'])->name('kategori.update');
+Route::put('/kategori/update_save/{id}', [KategoriController::class, 'update_save'])->name('kategori.update_save');
+Route::get('/kategori/delete/{id}', [KategoriController::class, 'delete'])->name('kategori.delete');
