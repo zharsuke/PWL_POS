@@ -18,4 +18,8 @@ class m_user extends Model
         'nama',
         'password',
     ];
+
+    public function level() {
+        return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
+    }
 }

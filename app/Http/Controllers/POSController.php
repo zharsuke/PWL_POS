@@ -13,7 +13,7 @@ class POSController extends Controller
     public function index()
     {
         // The eloquent function displays data using pagination
-        $useri = m_user::all(); // Retrieve all contents of a table
+        $useri = m_user::with('level')->get();
         return view('m_user.index', compact('useri'))->with('i');
     }
 

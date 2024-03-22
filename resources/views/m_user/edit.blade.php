@@ -1,4 +1,11 @@
-@extends('m_user/template')
+@extends('layout.app')
+
+{{-- customize layout section --}}
+
+@section('subtitle', 'User')
+@section('content_header_title', 'Home')
+@section('content_header_subtitle', 'User')
+
 @section('content')
     <div class="row mt-5 mb-5">
         <div class="col-lg-12 margin-tb">
@@ -44,13 +51,13 @@
                 <div class="form-group">
                     <strong>Username:</strong>
                     <input type="text" value= "{{ $useri->username }}" class="form-control" name="username"
-                        placeholder="Enter Username number",">
+                        placeholder="Enter Username number">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>nama:</strong>
-                    <input type="text" value= "{{ $useri->name }}"name="name" class="form-control"
+                    <input type="text" value= "{{ $useri->nama }}"name="nama" class="form-control"
                         placeholder="Enter name"></input>
                 </div>
             </div>
@@ -67,3 +74,9 @@
         </div>
     </form>
 @endsection
+
+{{-- 
+@extends('m_user/template')
+@section('content')
+
+@endsection --}}

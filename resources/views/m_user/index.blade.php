@@ -1,4 +1,11 @@
-@extends('m_user/template')
+@extends('layout.app')
+
+{{-- customize layout section --}}
+
+@section('subtitle', 'User')
+@section('content_header_title', 'Home')
+@section('content_header_subtitle', 'User')
+
 @section('content')
     <div class="row mt-5 mb-5">
         <div class="col-lg-12 margin-tb">
@@ -19,6 +26,8 @@
         <tr>
             <th width="20px" class="text-center">User id</th>
             <th width="150px" class="text-center">Level id</th>
+            <th width="150px" class="text-center">Level kode</th>
+            <th width="150px" class="text-center">Level nama</th>
             <th width="200px"class="text-center">username</th>
             <th width="200px"class="text-center">nama</th>
             <th width="150px"class="text-center">password</th>
@@ -27,7 +36,9 @@
         @foreach ($useri as $m_user)
             <tr>
                 <td>{{ $m_user->user_id }}</td>
-                <td>{{ $m_user->level_id }}</td>
+                <td>{{ $m_user->level->level_id }}</td>
+                <td>{{ $m_user->level->level_kode }}</td>
+                <td>{{ $m_user->level->level_nama }}</td>
                 <td>{{ $m_user->username }}</td>
                 <td>{{ $m_user->nama }}</td>
                 <td>{{ $m_user->password }}</td>
@@ -38,11 +49,21 @@
                         <form action="{{ route('m_user.destroy', $m_user->user_id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this data?')">Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Are you sure you want to delete this data?')">Delete</button>
                         </form>
                     </div>
                 </td>
             </tr>
         @endforeach
-        </borð>
-    @endsection
+    </table>
+@endsection
+
+@push('scripts')
+@endpush
+
+
+{{-- @extends('m_user/template')
+@section('content')
+    
+    @endsection --}}
