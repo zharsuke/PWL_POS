@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('template/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css') }}">
-    <title>Add User</title>
+    <title>Add Level</title>
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -22,33 +22,25 @@
     @extends('adminlte::page')
     @section('title', 'Dashboard')
     @section('content_header')
-        <h1>User</h1>
+        <h1>Level</h1>
     @stop
     @section('content')
 
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Add User</h3>
+            <h3 class="card-title">Add Level</h3>
         </div>
 
         <div class="card-body">
-            <form action="{{ route('/user/add_save') }}" method="POST">
+            <form action="{{ route('/level/add_save') }}" method="POST">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="">Username</label>
-                    <input class="form-control" type="text" name="username" id="" placeholder="Username">
+                    <label for="">Level Code</label>
+                    <input class="form-control" type="text" name="level_kode" id="" placeholder="Level Code">
                 </div>
                 <div class="form-group">
-                    <label for="">Name</label>
-                    <input class="form-control" type="text" name="nama" id="" placeholder="Name">
-                </div>
-                <div class="form-group">
-                    <label for="">Password</label>
-                    <input class="form-control" type="password" name="password" id="" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <label for="">ID Level</label>
-                    <input class="form-control" type="number" name="level_id" id="" placeholder="ID Level">
+                    <label for="">Level Name</label>
+                    <input class="form-control" type="text" name="level_nama" id="" placeholder="Level Name">
                 </div>
                 <input class="btn btn-primary" type="submit" value="Save">
             </form>

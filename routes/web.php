@@ -21,6 +21,9 @@ Route::get('/', function () {
 });
 
 Route::get('/level', [LevelController::class, 'index']);
+Route::get('/level/add', [LevelController::class, 'add'])->name('/level/add');
+Route::post('/level/add_save', [LevelController::class, 'add_save'])->name('/level/add_save');
+
 Route::get('/kategori', [KategoriController::class, 'index']);
 Route::get('/user', [UserController::class, 'index'])->name('/user');
 
