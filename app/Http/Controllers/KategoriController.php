@@ -48,15 +48,13 @@ class KategoriController extends Controller
         //     'kategori_nama' => 'required'
         // ]);
 
-        // KategoriModel::create([
-        //     'kategori_kode' => $validated['kategori_kode'],
-        //     'kategori_nama' => $validated['kategori_nama']
-        // ]);
-
+        
         $validated = $request->validated();
-
+        
         $validated = $request->safe()->only(['kategori_kode', 'kategori_nama']);
         $validated = $request->safe()->except(['kategori_kode', 'kategori_nama']);
+        
+        KategoriModel::create($validated);
         
         return redirect('/kategori');
     }

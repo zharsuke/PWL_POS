@@ -29,15 +29,13 @@ class LevelController extends Controller
     }
 
     public function add_save(StorePostRequest $request): RedirectResponse {
-        // LevelModel::create([
-        //     'level_kode' => $request->level_kode,
-        //     'level_nama' => $request->level_nama
-        // ]);
-
+        
         $validated = $request->validated();
-
+        
         $validated = $request->safe()->only(['level_kode', 'level_nama']);
         $validated = $request->safe()->except(['level_kode', 'level_nama']);
+        
+        LevelModel::create($validated);
 
         return redirect('/level');
     }
