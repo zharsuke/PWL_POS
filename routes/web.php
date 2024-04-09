@@ -4,6 +4,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\POSController;
+use App\Http\Controllers\StokController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
@@ -95,4 +96,16 @@ Route::group(['prefix' => 'item'], function() {
     Route::get('/{id}/edit', [ItemController::class, 'edit']);
     Route::put('/{id}', [ItemController::class, 'update']);
     Route::delete('/{id}', [ItemController::class, 'destroy']);
+});
+
+// Stok Route
+Route::group(['prefix' => 'stok'], function() {
+    Route::get('/', [StokController::class, 'index']);
+    Route::post('/list', [StokController::class, 'list']);
+    Route::get('/create', [StokController::class, 'create']);
+    Route::post('/', [StokController::class, 'store']);
+    Route::get('/{id}', [StokController::class, 'show']);
+    Route::get('/{id}/edit', [StokController::class, 'edit']);
+    Route::put('/{id}', [StokController::class, 'update']);
+    Route::delete('/{id}', [StokController::class, 'destroy']);
 });
