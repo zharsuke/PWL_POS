@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\POSController;
@@ -82,4 +83,16 @@ Route::group(['prefix' => 'category'], function() {
     Route::get('/{id}/edit', [KategoriController::class, 'edit']);
     Route::put('/{id}', [KategoriController::class, 'update']);
     Route::delete('/{id}', [KategoriController::class, 'destroy']);
+});
+
+// Item Route
+Route::group(['prefix' => 'item'], function() {
+    Route::get('/', [ItemController::class, 'index']);
+    Route::post('/list', [ItemController::class, 'list']);
+    Route::get('/create', [ItemController::class, 'create']);
+    Route::post('/', [ItemController::class, 'store']);
+    Route::get('/{id}', [ItemController::class, 'show']);
+    Route::get('/{id}/edit', [ItemController::class, 'edit']);
+    Route::put('/{id}', [ItemController::class, 'update']);
+    Route::delete('/{id}', [ItemController::class, 'destroy']);
 });
