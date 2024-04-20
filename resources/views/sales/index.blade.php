@@ -5,7 +5,7 @@
         <div class="card-header">
             <h3 class="card-title">{{ $page->title }}</h3>
             <div class="card-tools">
-                <a class="btn btn-sm btn-primary mt-1" href="{{ url('stok/create') }}">Tambah</a>
+                <a class="btn btn-sm btn-primary mt-1" href="{{ url('sales/create') }}">Tambah</a>
             </div>
         </div>
         <div class="card-body">
@@ -22,26 +22,26 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group row">
-                        <label for="" class="col-1 control-label col-form-label">Filter Barang:</label>
+                        <label for="" class="col-1 control-label col-form-label">Filter:</label>
                         <div class="col-3">
-                            <select class="form-control" id="barang_id" name="barang_id" required>
+                            <select class="form-control" id="user_id" name="user_id" required>
                                 <option value="">- Semua -</option>
-                                @foreach ($barang as $item)
-                                    <option value="{{ $item->barang_id }}">{{ $item->barang_nama }}</option>
+                                @foreach ($user as $item)
+                                    <option value="{{ $item->user_id }}">{{ $item->username }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
                 </div>
             </div>
-            <table class="table table-bordered table-striped table-hover table-sm" id="table_stok">
+            <table class="table table-bordered table-striped table-hover table-sm" id="table_sales">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Item Name</th>
-                        <th>Username</th>
-                        <th>Stock Date</th>
-                        <th>Stock Amount</th>
+                        <th>Cashier</th>
+                        <th>Customer</th>
+                        <th>Sales Code</th>
+                        <th>Sales Date</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -58,14 +58,14 @@
 @push('js')
     <script>
         $(document).ready(function() {
-            var dataStok = $('#table_stok').DataTable({
+            var dataSales = $('#table_sales').DataTable({
                 serverSide: true,
                 ajax: {
-                    "url": "{{ url('stok/list') }}",
+                    "url": "{{ url('sales/list') }}",
                     "dataType": "json",
                     "type": "POST",
                     "data": function (d) {
-                        d.barang_id = $('#barang_id').val();
+                        d.user_id = $('#user_id').val();
                     }
                 },
                 columns: [{
@@ -75,25 +75,25 @@
                         searchable: false
                     },
                     {
-                        data: "barang.barang_nama",
-                        className: "",
-                        orderable: true,
-                        searchable: true
-                    },
-                    {
                         data: "user.username",
                         className: "",
                         orderable: true,
                         searchable: true
                     },
                     {
-                        data: "stok_tanggal",
+                        data: "pembeli",
                         className: "",
                         orderable: true,
                         searchable: true
                     },
                     {
-                        data: "stok_jumlah",
+                        data: "penjualan_kode",
+                        className: "",
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: "penjualan_tanggal",
                         className: "",
                         orderable: true,
                         searchable: true
@@ -107,9 +107,9 @@
                 ]
             });
 
-            $('#barang_id').on('change', function() {
-                dataStok.ajax.reload();
-            });
+            $('#user_id').on('change', function() {
+                dataSales.ajax.reload();
+            })
 
         });
     </script>

@@ -4,6 +4,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\POSController;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\StokController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
@@ -108,4 +109,16 @@ Route::group(['prefix' => 'stok'], function() {
     Route::get('/{id}/edit', [StokController::class, 'edit']);
     Route::put('/{id}', [StokController::class, 'update']);
     Route::delete('/{id}', [StokController::class, 'destroy']);
+});
+
+// Sales Route
+Route::group(['prefix' => 'sales'], function() {
+    Route::get('/', [SalesController::class, 'index']);
+    Route::post('/list', [SalesController::class, 'list']);
+    Route::get('/create', [SalesController::class, 'create']);
+    Route::post('/', [SalesController::class, 'store']);
+    Route::get('/{id}', [SalesController::class, 'show']);
+    Route::get('/{id}/edit', [SalesController::class, 'edit']);
+    Route::put('/{id}', [SalesController::class, 'update']);
+    Route::delete('/{id}', [SalesController::class, 'destroy']);
 });

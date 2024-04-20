@@ -29,7 +29,9 @@ class StokController extends Controller
 
         $user = UserModel::all();
 
-        return view('stok.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'user' => $user, 'activeMenu' => $activeMenu]);
+        $barang = BarangModel::all();
+
+        return view('stok.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'user' => $user, 'activeMenu' => $activeMenu, 'barang' => $barang]);
         
     }
 
