@@ -43,9 +43,9 @@ class SalesController extends Controller
 
         return DataTables::of($sales)
             ->addIndexColumn()
-            ->addColumn('action', function ($user) {
-                $btn = '<a href="' . url('/sales/' . $user->user_id) . '" class="btn btn-info btn-sm">Detail</a> ';
-                $btn .= '<form class="d-inline-block" method="POST" action="' . url('/sales/' . $user->user_id) . '">'
+            ->addColumn('action', function ($sales) {
+                $btn = '<a href="' . url('/sales/' . $sales->penjualan_id) . '" class="btn btn-info btn-sm">Detail</a> ';
+                $btn .= '<form class="d-inline-block" method="POST" action="' . url('/sales/' . $sales->penjualan_id) . '">'
                     . csrf_field() . method_field('DELETE') .
                     '<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure to delete this data?\');">Delete</button></form>';
                 return $btn;
@@ -92,7 +92,7 @@ class SalesController extends Controller
             'pembeli' => 'required|string',
             'penjualan_tanggal' => 'required|date',
             'barang_id' => 'required|array',
-            'harga' => 'required|array', // Update validasi untuk mencocokkan struktur array
+            'harga' => 'required|array',
             'jumlah' => 'required|array|min:1',
         ]);
 
@@ -103,7 +103,6 @@ class SalesController extends Controller
             'penjualan_tanggal' => $request->penjualan_tanggal
         ]);
 
-        // Simpan detail penjualan
         foreach ($request->barang_id as $index => $barang_id) {
             SalesDetailModel::create([
                 'penjualan_id' => $trans->penjualan_id,
@@ -112,14 +111,11 @@ class SalesController extends Controller
                 'jumlah' => $request->jumlah[$index],
             ]);
 
-            // Ambil jumlah stok barang yang tersedia
             $stok = StokModel::where('barang_id', $barang_id)->first();
 
             if ($stok) {
-                // Kurangi jumlah yang dibeli dari jumlah stok yang tersedia
                 $stok->stok_jumlah -= $request->jumlah[$index];
 
-                // Simpan kembali jumlah stok yang telah diupdate
                 $stok->save();
             }
         }
