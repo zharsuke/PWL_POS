@@ -71,7 +71,7 @@ class SalesController extends Controller
         $activeMenu = 'sales';
 
         $barang = BarangModel::whereHas('stok', function ($query) {
-            $query->where('stok_jumlah', '>', 1);
+            $query->where('stok_jumlah', '>', 0);
         })->get();
         $user = UserModel::all();
 
