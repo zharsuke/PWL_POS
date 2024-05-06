@@ -25,7 +25,7 @@ class LoginController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Username atau password salah!'
-            ], 200);
+            ], 401);
         }
 
         return response()->json([
