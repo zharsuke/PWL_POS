@@ -23,7 +23,7 @@ class KategoriController extends Controller
 
     public function update(Request $request, KategoriModel $kategori) {
         $kategori->update($request->all());
-        return KategoriModel::find($kategori);
+        return $kategori;
     }
 
     public function destroy(KategoriModel $kategori) {

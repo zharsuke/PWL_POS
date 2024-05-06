@@ -23,7 +23,7 @@ class BarangController extends Controller
 
     public function update(Request $request, BarangModel $barang) {
         $barang->update($request->all());
-        return BarangModel::find($barang);
+        return $barang;
     }
 
     public function destroy(BarangModel $barang) {
