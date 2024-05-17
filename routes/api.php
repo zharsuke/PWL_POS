@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/register', RegisterController::class)->name('register');
+// Route::post('/register', RegisterController::class)->name('register');
 Route::post('/register1', RegisterController::class)->name('register');
 Route::post('/login', LoginController::class)->name('login');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
@@ -42,7 +42,8 @@ Route::middleware('auth:api')->put('user/{user}', [UserController::class, 'updat
 Route::middleware('auth:api')->delete('user/{user}', [UserController::class, 'destroy']);
 
 Route::middleware('auth:api')->get('barang', [BarangController::class, 'index']);
-Route::middleware('auth:api')->post('barang', [BarangController::class, 'store']);
+// Route::middleware('auth:api')->post('barang', [BarangController::class, 'store']);
+Route::middleware('auth:api')->post('barang1', [BarangController::class, 'store']);
 Route::middleware('auth:api')->get('barang/{barang}', [BarangController::class, 'show']);
 Route::middleware('auth:api')->put('barang/{barang}', [BarangController::class, 'update']);
 Route::middleware('auth:api')->delete('barang/{barang}', [BarangController::class, 'destroy']);
