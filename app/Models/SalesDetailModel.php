@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class SalesDetailModel extends Model
 {
@@ -16,7 +17,8 @@ class SalesDetailModel extends Model
         'penjualan_id',
         'barang_id',
         'harga',
-        'jumlah'
+        'jumlah',
+        'image'
     ];
 
     public function sales() {
@@ -25,5 +27,12 @@ class SalesDetailModel extends Model
 
     public function barang() {
         return $this->belongsTo(BarangModel::class, 'barang_id', 'barang_id');
+    }
+
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($image) => url('/storage/posts/' . $image),
+        );
     }
 }

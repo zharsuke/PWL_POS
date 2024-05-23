@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\LevelController;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\LogoutController;
 use App\Http\Controllers\Api\RegisterController;
+use App\Http\Controllers\Api\SalesController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -53,3 +54,6 @@ Route::middleware('auth:api')->post('kategori', [KategoriController::class, 'sto
 Route::middleware('auth:api')->get('kategori/{kategori}', [KategoriController::class, 'show']);
 Route::middleware('auth:api')->put('kategori/{kategori}', [KategoriController::class, 'update']);
 Route::middleware('auth:api')->delete('kategori/{kategori}', [KategoriController::class, 'destroy']);
+
+Route::middleware('auth:api')->get('sales', [SalesController::class, 'index']);
+Route::middleware('auth:api')->post('sales', [SalesController::class, 'store']);
